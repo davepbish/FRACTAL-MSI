@@ -9,6 +9,7 @@ from pewlib.process.filters import rolling_median
 
 import register
 
+#Script to combine TIFF and LA-ICP-MS files for image fusion by cumilative density function and pixel redistribution
 
 def read_tiff_image(
     path: Path, channel: int = 0
@@ -303,9 +304,9 @@ def main():
         ],
     )
     data[new_name] = combined
-    data["mapped"] = laser_mapped
+    data["mapped"] = laser_mapped #PRIF
     data["micro"] = micro
-    data["cdf"] = hist_map
+    data["cdf"] = hist_map    #CDFIF
 
     data = trim_nans(data, data.dtype.names[0])  # type: ignore
 
